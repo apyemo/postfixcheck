@@ -81,7 +81,7 @@ do
 
 done
 
-valid_reg="^[A-F0-9]{10}$"
+valid_reg="^[A-F0-9]{$long_ID}$"
 
 for ((i=0; i<${#ID[@]}; i++))
 do
