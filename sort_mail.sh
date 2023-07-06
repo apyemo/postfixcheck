@@ -6,6 +6,8 @@
 # ./sort_mail.sh <maillog_filename>
 # The result will be a file as reporte_<maillog_filename>.csv
 
+long_ID=12 #Long for IDs on POSTFIX, you can change for your postfix version
+
 long_log=$(wc -l $1)
 LOG=()
 i=0
@@ -14,11 +16,11 @@ while read -r log;do
  i=$(( i + 1 ))
 done < "$1"
 
+filter_ID=$(( long_ID + 1 ))
 i=0
-
 for ((i = 0; i<${#LOG[@]};i++))
 do
-   ID[i]=$(echo "${LOG[i]}" | awk -F':' '{ print $4}'| cut -c2-11)
+   ID[i]=$(echo "${LOG[i]}" | awk -F':' '{ print $4}'| cut -c2-$filter_ID)
    DATE[i]=$(echo "${LOG[i]}" | cut -c1-15)
    DATEF[i]=$(date -d "${DATE[i]}" +"%H:%M:%S %d/%m/%Y")
    DATA[i]=$(echo "${LOG[i]}" | cut -d':' -f5)
