@@ -6,6 +6,11 @@
 # ./sort_mail.sh <maillog_filename>
 # The result will be a file as reporte_<maillog_filename>.csv
 
+# Copyright 2023 Guillermo Espejo  <guillermo.espejo@cip.org.pe
+#
+# This software may be used and distributed according to the terms of
+# the GNU General Public License version 2 or later.
+
 long_ID=12 #Long for IDs on POSTFIX, you can change for your postfix version
 
 long_log=$(wc -l $1)
